@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { catchError, Observable, of } from 'rxjs';
 
+import { map } from 'rxjs/operators';
 import { Hero } from '../interfaces/hero.interface';
 import { environments } from '../../../environments/environments';
 
@@ -9,7 +10,6 @@ import { environments } from '../../../environments/environments';
 export class HeroesService {
 
   private baseUrl: string = environments.baseUrl;
-
 
   constructor(private http: HttpClient) { }
 
@@ -26,7 +26,10 @@ export class HeroesService {
   }
 
   getSuggestions( query: string ): Observable<Hero[]> {
-    return this.http.get<Hero[]>(`${ this.baseUrl }/heroes?q=${ query }&_limit=6`);
+    // return this.http.get<Hero[]>(`${ this.baseUrl }/heroes?q=${ query }&_limit=6`);
+    return this.http.get<Hero[]>(`${ this.baseUrl }/heroes`).pipe(
+      map((heroes: Hero[]) => heroes.filter(hero => hero.superhero.toLocaleLowerCase().includes(query.toLocaleLowerCase())))
+    );
   }
 
 
