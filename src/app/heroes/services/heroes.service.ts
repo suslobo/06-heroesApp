@@ -26,10 +26,31 @@ export class HeroesService {
   }
 
   getSuggestions( query: string ): Observable<Hero[]> {
-    // return this.http.get<Hero[]>(`${ this.baseUrl }/heroes?q=${ query }&_limit=6`);
-    return this.http.get<Hero[]>(`${ this.baseUrl }/heroes`).pipe(
-      map((heroes: Hero[]) => heroes.filter(hero => hero.superhero.toLocaleLowerCase().includes(query.toLocaleLowerCase())))
-    );
+    return this.http.get<Hero[]>(`${ this.baseUrl }/heroes?q=${ query }&_limit=6`);
+  }
+
+  //contruimos los 3 CRUD que nos hacen falta. tres endpoints
+  //agregamos
+  addHero( hero: Hero): Observable<Hero> {
+    return this.http.post<Hero>(`${ this.baseUrl }/heroes`, hero);
+  }
+
+  //actualizamos datos
+  updateHero( hero: Hero): Observable<Hero> {
+    if (!hero.id) throw Error('Hero id is required');  //si no existe
+
+    return this.http.patch<Hero>(`${ this.baseUrl }/heroes/${ hero.id}`, hero);
+  }
+
+  //eliminamos
+  // si no da error no entra el catchError, si todo sale bien entra el map, el true
+  deleteHeroById( id: string): Observable<boolean> {
+
+    return this.http.delete(`${ this.baseUrl }/heroes/${ id}`)
+      .pipe(
+        catchError(err => of(false)), //quere decir que no se borró
+        map( resp => true)
+      );
   }
 
 
