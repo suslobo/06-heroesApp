@@ -41,7 +41,19 @@ export class NewPageComponent {
   onSubmit(): void {
     if ( this.heroForm.invalid) return; //si el formulario no es válido no hagas nada
     // this. heroesService.updateHero(this.heroForm.value);
-
+    // si tenemos un id
+    if ( this.currentHero.id ) {
+      this.heroesService.updateHero( this.currentHero )
+        .subscribe( hero => {
+            //TODO: mostrar snackbar
+        });
+        return;
+    }
+    //si no tenemos un id es que lo quiere crear
+    this.heroesService.addHero(this.currentHero)
+      .subscribe(hero => {
+          //TODO: mostrar snackbar, y navegar a /heroes/edit/ hero.id
+      });
     }
   }
 
