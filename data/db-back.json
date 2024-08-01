@@ -2,7 +2,7 @@
   "users": [
     {
       "id": 1,
-      "usuario": "John Doe",
+      "user": "John Doe",
       "email": "john.due@gmail.com"
     }
   ],
@@ -12,7 +12,7 @@
       "superhero": "Batman",
       "publisher": "DC Comics",
       "alter_ego": "Bruce Wayne",
-      "first_appearance": "Detective Comics #27",
+      "first_appearance": "Mi primer comic #2",
       "characters": "Bruce Wayne"
     },
     {
@@ -21,7 +21,8 @@
       "publisher": "DC Comics",
       "alter_ego": "Kal-El",
       "first_appearance": "Action Comics #1",
-      "characters": "Kal-El"
+      "characters": "Kal-El",
+      "alt_img": "https://insidepulse.com/wp-content/uploads/2017/10/Superman-34-celebrates-Supersman-800-variant-cover-Tony-Daniel-DC-Comics-Rebirth.jpg"
     },
     {
       "id": "dc-flash",
@@ -166,6 +167,15 @@
       "alter_ego": "Norrin Radd",
       "first_appearance": "The Fantastic Four #48",
       "characters": "Norrin Radd"
+    },
+    {
+      "id": "5IyiBB7",
+      "superhero": "Fernando",
+      "publisher": "Marvel Comics",
+      "alter_ego": "Strider",
+      "first_appearance": "Comic Udemy 2015 #1",
+      "characters": "Feranando",
+      "alt_img": "https://vignette.wikia.nocookie.net/deathbattle/images/1/12/Strider.png"
     }
   ]
 }

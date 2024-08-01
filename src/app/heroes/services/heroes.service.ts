@@ -42,6 +42,11 @@ export class HeroesService {
     return this.http.patch<Hero>(`${ this.baseUrl }/heroes/${ hero.id}`, hero);
   }
 
+  //mensaje de confirmación Matdialog
+  
+
+
+
   //eliminamos
   // si no da error no entra el catchError, si todo sale bien entra el map, el true
   deleteHeroById( id: string): Observable<boolean> {
